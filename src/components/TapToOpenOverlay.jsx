@@ -70,14 +70,37 @@ export default function TapToOpenOverlay({ onOpen }) {
           position: "absolute",
           top: 0,
           left: 0,
-          width: "51%",
+          width: "50%",
           height: "100%",
           background:
             "radial-gradient(ellipse at 100% 50%, #0d1637 0%, #060914 70%, #03050c 100%)",
           transform: isOpening ? "translateX(-100%)" : "translateX(0)",
           transition: "transform 1.3s cubic-bezier(0.76, 0, 0.24, 1)",
           willChange: "transform",
-          zIndex: 1
+          zIndex: 1,
+          borderRight: "1px solid rgba(212, 175, 55, 0.5)",
+          boxShadow: isOpening
+            ? "none"
+            : "inset -16px 0 30px rgba(0, 0, 0, 0.85), 1px 0 10px rgba(212, 175, 55, 0.3)"
+        }}
+      />
+
+      {/* Center Royal Gate Seam Line */}
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          bottom: 0,
+          left: "50%",
+          width: "2px",
+          transform: "translateX(-50%)",
+          background:
+            "linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.3) 12%, rgba(254, 240, 138, 0.95) 50%, rgba(212, 175, 55, 0.3) 88%, transparent 100%)",
+          boxShadow: "0 0 12px rgba(245, 158, 11, 0.7)",
+          opacity: isOpening ? 0 : 1,
+          transition: "opacity 0.4s ease",
+          zIndex: 2,
+          pointerEvents: "none"
         }}
       />
 
@@ -87,14 +110,18 @@ export default function TapToOpenOverlay({ onOpen }) {
           position: "absolute",
           top: 0,
           right: 0,
-          width: "51%",
+          width: "50%",
           height: "100%",
           background:
             "radial-gradient(ellipse at 0% 50%, #0d1637 0%, #060914 70%, #03050c 100%)",
           transform: isOpening ? "translateX(100%)" : "translateX(0)",
           transition: "transform 1.3s cubic-bezier(0.76, 0, 0.24, 1)",
           willChange: "transform",
-          zIndex: 1
+          zIndex: 1,
+          borderLeft: "1px solid rgba(212, 175, 55, 0.5)",
+          boxShadow: isOpening
+            ? "none"
+            : "inset 16px 0 30px rgba(0, 0, 0, 0.85), -1px 0 10px rgba(212, 175, 55, 0.3)"
         }}
       />
 
@@ -124,45 +151,46 @@ export default function TapToOpenOverlay({ onOpen }) {
         <div
           className="animate-seal-ripple"
           style={{
-            width: "110px",
-            height: "110px",
+            width: "116px",
+            height: "116px",
             borderRadius: "50%",
             background:
               "radial-gradient(circle at 35% 35%, #fef3c7 0%, #d4af37 45%, #926210 80%, #583705 100%)",
             border: "3px solid #fef3c7",
             display: "flex",
-            flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
             boxShadow:
-              "0 12px 35px rgba(0, 0, 0, 0.8), 0 0 30px rgba(245, 158, 11, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.8)",
+              "0 14px 40px rgba(0, 0, 0, 0.85), 0 0 35px rgba(245, 158, 11, 0.6), inset 0 2px 5px rgba(255, 255, 255, 0.85)",
             position: "relative",
-            marginBottom: "20px"
+            marginBottom: "20px",
+            overflow: "hidden"
           }}
         >
           {/* Inner Ring */}
           <div
             style={{
               position: "absolute",
-              inset: "5px",
+              inset: "4px",
               borderRadius: "50%",
-              border: "1px dashed rgba(255, 255, 255, 0.6)",
+              border: "1.5px dashed rgba(254, 243, 199, 0.75)",
+              zIndex: 2,
               pointerEvents: "none"
             }}
           />
 
-          <span
-            className="font-sanskrit"
+          {/* Ganpati Divine Sacred Logo */}
+          <img
+            src="/assets/ganpati-logo.jpg"
+            alt="Lord Ganesha Sacred Emblem"
             style={{
-              fontSize: "2.4rem",
-              fontWeight: 700,
-              color: "#3a2003",
-              lineHeight: 1,
-              textShadow: "0 1px 1px rgba(255, 255, 255, 0.7)"
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              transform: "scale(1.08)",
+              filter: "contrast(1.15) brightness(1.05)"
             }}
-          >
-            ॐ
-          </span>
+          />
         </div>
 
         {/* Shloka Header */}
