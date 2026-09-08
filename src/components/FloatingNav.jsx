@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { Home, Mail, MapPin, Heart } from "lucide-react";
+import { Home, Mail, MapPin, Heart, ChevronDown } from "lucide-react";
 
 export default function FloatingNav() {
   const [activeSection, setActiveSection] = useState("hero");
+  const [isAtTop, setIsAtTop] = useState(true);
 
   const navItems = [
     { id: "hero", label: "Home", icon: <Home size={15} /> },
@@ -13,13 +14,16 @@ export default function FloatingNav() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const scrollPos = window.scrollY + 200;
+      const scrollPos = window.scrollY;
+      setIsAtTop(scrollPos < 140);
+
+      const offsetPos = scrollPos + 200;
       for (const item of navItems) {
         const el = document.getElementById(item.id);
         if (el) {
           const top = el.offsetTop;
           const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
+          if (offsetPos >= top && offsetPos < top + height) {
             setActiveSection(item.id);
             break;
           }
@@ -28,6 +32,7 @@ export default function FloatingNav() {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -49,56 +54,84 @@ export default function FloatingNav() {
         zIndex: 90
       }}
     >
-      <div
-        className="glass-pill"
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "4px",
-          padding: "6px 8px",
-          background: "rgba(8, 12, 28, 0.85)",
-          border: "1px solid rgba(212, 175, 55, 0.3)",
-          boxShadow: "0 8px 30px rgba(0, 0, 0, 0.65), 0 0 15px rgba(212, 175, 55, 0.1)"
-        }}
-      >
-        {navItems.map((item) => {
-          const isActive = activeSection === item.id;
-          return (
-            <button
-              key={item.id}
-              onClick={() => scrollToSection(item.id)}
-              aria-label={`Navigate to ${item.label}`}
-              style={{
-                display: "flex",
-                alignItems: "center",
-                gap: "6px",
-                padding: "8px 14px",
-                borderRadius: "999px",
-                border: "none",
-                background: isActive
-                  ? "linear-gradient(135deg, rgba(212, 175, 55, 0.28) 0%, rgba(245, 158, 11, 0.16) 100%)"
-                  : "transparent",
-                color: isActive ? "#ffffff" : "var(--text-muted)",
-                cursor: "pointer",
-                fontFamily: "var(--font-display)",
-                fontSize: "0.74rem",
-                letterSpacing: "0.06em",
-                textTransform: "uppercase",
-                transition: "all 0.25s ease"
-              }}
-            >
-              <span
+      {isAtTop ? (
+        /* Prominent Floating Action Pill visible on homepage */
+        <button
+          onClick={() => scrollToSection("invitation-message")}
+          className="btn-gold-solid animate-aura-pulse"
+          aria-label="Scroll down to read the full invitation"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "8px",
+            padding: "10px 22px",
+            borderRadius: "999px",
+            fontSize: "0.82rem",
+            letterSpacing: "0.08em",
+            textTransform: "uppercase",
+            fontFamily: "var(--font-display)",
+            cursor: "pointer",
+            boxShadow:
+              "0 8px 30px rgba(0, 0, 0, 0.75), 0 0 25px rgba(245, 158, 11, 0.45)",
+            whiteSpace: "nowrap"
+          }}
+        >
+          <span>Scroll to Invitation</span>
+          <ChevronDown size={17} className="animate-scroll-chevron" />
+        </button>
+      ) : (
+        /* Multi-section navigation bar when exploring content */
+        <div
+          className="glass-pill"
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: "4px",
+            padding: "6px 8px",
+            background: "rgba(8, 12, 28, 0.85)",
+            border: "1px solid rgba(212, 175, 55, 0.3)",
+            boxShadow: "0 8px 30px rgba(0, 0, 0, 0.65), 0 0 15px rgba(212, 175, 55, 0.1)"
+          }}
+        >
+          {navItems.map((item) => {
+            const isActive = activeSection === item.id;
+            return (
+              <button
+                key={item.id}
+                onClick={() => scrollToSection(item.id)}
+                aria-label={`Navigate to ${item.label}`}
                 style={{
-                  color: isActive ? "var(--saffron-bright)" : "var(--text-muted)"
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "6px",
+                  padding: "8px 14px",
+                  borderRadius: "999px",
+                  border: "none",
+                  background: isActive
+                    ? "linear-gradient(135deg, rgba(212, 175, 55, 0.28) 0%, rgba(245, 158, 11, 0.16) 100%)"
+                    : "transparent",
+                  color: isActive ? "#ffffff" : "var(--text-muted)",
+                  cursor: "pointer",
+                  fontFamily: "var(--font-display)",
+                  fontSize: "0.74rem",
+                  letterSpacing: "0.06em",
+                  textTransform: "uppercase",
+                  transition: "all 0.25s ease"
                 }}
               >
-                {item.icon}
-              </span>
-              <span className="nav-label">{item.label}</span>
-            </button>
-          );
-        })}
-      </div>
+                <span
+                  style={{
+                    color: isActive ? "var(--saffron-bright)" : "var(--text-muted)"
+                  }}
+                >
+                  {item.icon}
+                </span>
+                <span className="nav-label">{item.label}</span>
+              </button>
+            );
+          })}
+        </div>
+      )}
 
       <style>{`
         @media (max-width: 520px) {

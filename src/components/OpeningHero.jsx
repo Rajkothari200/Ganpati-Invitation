@@ -59,7 +59,7 @@ export default function OpeningHero({ isStarted = false }) {
         alignItems: "center",
         justifyContent: "center",
         position: "relative",
-        padding: "80px 20px 48px",
+        padding: "clamp(42px, 6vh, 64px) 16px 32px",
         overflow: "hidden",
         textAlign: "center"
       }}
@@ -121,14 +121,14 @@ export default function OpeningHero({ isStarted = false }) {
           opacity: stage >= 1 ? 1 : 0,
           transform: stage >= 1 ? "translateY(0)" : "translateY(-15px)",
           transition: "opacity 1.8s ease, transform 1.8s ease",
-          marginBottom: "14px",
+          marginBottom: "8px",
           zIndex: 2
         }}
       >
         <div
           className="font-sanskrit animate-om-glow"
           style={{
-            fontSize: "clamp(2.4rem, 6vw, 3.6rem)",
+            fontSize: "clamp(2rem, 5vw, 3rem)",
             background: "linear-gradient(135deg, #faecc1 0%, #d4af37 50%, #aa771c 100%)",
             WebkitBackgroundClip: "text",
             WebkitTextFillColor: "transparent",
@@ -141,10 +141,10 @@ export default function OpeningHero({ isStarted = false }) {
         <p
           className="font-sanskrit"
           style={{
-            fontSize: "clamp(0.95rem, 2.5vw, 1.15rem)",
+            fontSize: "clamp(0.85rem, 2.2vw, 1.05rem)",
             color: "var(--gold-light)",
             letterSpacing: "0.14em",
-            marginTop: "6px",
+            marginTop: "4px",
             textShadow: "0 0 16px rgba(212, 175, 55, 0.45)"
           }}
         >
@@ -161,20 +161,20 @@ export default function OpeningHero({ isStarted = false }) {
           opacity: stage >= 2 ? 1 : 0,
           transform: `translate(${mouseOffset.x * 0.7}px, ${mouseOffset.y * 0.7}px) ${stage >= 2 ? "scale(1)" : "scale(0.92)"}`,
           transition: "opacity 2.2s cubic-bezier(0.16, 1, 0.3, 1), transform 2.2s cubic-bezier(0.16, 1, 0.3, 1)",
-          margin: "12px 0 20px"
+          margin: "8px 0 14px"
         }}
       >
         {/* Soft Golden Halo Ring */}
         <div
           style={{
             position: "absolute",
-            top: "-12px",
-            left: "-12px",
-            right: "-12px",
-            bottom: "-12px",
-            borderRadius: "28px",
+            top: "-10px",
+            left: "-10px",
+            right: "-10px",
+            bottom: "-10px",
+            borderRadius: "24px",
             border: "1px solid rgba(212, 175, 55, 0.32)",
-            boxShadow: "0 0 35px rgba(212, 175, 55, 0.28), inset 0 0 25px rgba(212, 175, 55, 0.15)",
+            boxShadow: "0 0 30px rgba(212, 175, 55, 0.28), inset 0 0 20px rgba(212, 175, 55, 0.15)",
             pointerEvents: "none"
           }}
         />
@@ -182,13 +182,13 @@ export default function OpeningHero({ isStarted = false }) {
         {/* Temple Arch / Portrait Container */}
         <div
           style={{
-            width: "min(340px, 82vw)",
-            maxWidth: "380px",
+            width: "min(250px, 65vw)",
+            maxHeight: "310px",
             aspectRatio: "3 / 4",
-            borderRadius: "24px",
+            borderRadius: "20px",
             overflow: "hidden",
             boxShadow:
-              "0 24px 60px -12px rgba(0, 0, 0, 0.85), 0 0 45px rgba(245, 158, 11, 0.25)",
+              "0 20px 50px -10px rgba(0, 0, 0, 0.85), 0 0 40px rgba(245, 158, 11, 0.25)",
             border: "1.5px solid rgba(246, 232, 177, 0.4)",
             position: "relative",
             background: "#080c1d"
@@ -221,8 +221,8 @@ export default function OpeningHero({ isStarted = false }) {
           <div
             style={{
               position: "absolute",
-              inset: "8px",
-              borderRadius: "18px",
+              inset: "6px",
+              borderRadius: "15px",
               border: "1px solid rgba(212, 175, 55, 0.35)",
               pointerEvents: "none"
             }}
@@ -236,20 +236,20 @@ export default function OpeningHero({ isStarted = false }) {
           position: "relative",
           zIndex: 2,
           opacity: stage >= 4 ? 1 : 0,
-          transform: stage >= 4 ? "translateY(0)" : "translateY(24px)",
+          transform: stage >= 4 ? "translateY(0)" : "translateY(20px)",
           transition: "opacity 1.8s cubic-bezier(0.16, 1, 0.3, 1), transform 1.8s cubic-bezier(0.16, 1, 0.3, 1)",
-          maxWidth: "620px",
-          marginTop: "8px"
+          maxWidth: "600px",
+          marginTop: "4px"
         }}
       >
         <p
           className="font-display"
           style={{
-            fontSize: "clamp(0.75rem, 2vw, 0.9rem)",
-            letterSpacing: "0.22em",
+            fontSize: "clamp(0.72rem, 1.8vw, 0.85rem)",
+            letterSpacing: "0.2em",
             textTransform: "uppercase",
             color: "var(--saffron-bright)",
-            marginBottom: "8px"
+            marginBottom: "6px"
           }}
         >
           {invitationConfig.subHeading}
@@ -258,28 +258,28 @@ export default function OpeningHero({ isStarted = false }) {
         <h1
           className="font-heading shimmer-gold"
           style={{
-            fontSize: "clamp(2.4rem, 7vw, 4.2rem)",
+            fontSize: "clamp(2rem, 6vw, 3.4rem)",
             fontWeight: 700,
-            lineHeight: 1.08,
+            lineHeight: 1.1,
             letterSpacing: "0.02em",
-            marginBottom: "14px"
+            marginBottom: "10px"
           }}
         >
           {invitationConfig.mainHeading}
         </h1>
 
-        <div className="gold-divider">
+        <div className="gold-divider" style={{ margin: "10px auto" }}>
           <span className="gold-divider-symbol">✦</span>
         </div>
 
         <p
           style={{
-            fontSize: "clamp(1.05rem, 2.6vw, 1.25rem)",
+            fontSize: "clamp(0.95rem, 2.4vw, 1.15rem)",
             color: "var(--text-secondary)",
             fontFamily: "var(--font-heading)",
             fontStyle: "italic",
-            lineHeight: 1.6,
-            maxWidth: "520px",
+            lineHeight: 1.5,
+            maxWidth: "500px",
             margin: "0 auto"
           }}
         >
@@ -287,7 +287,7 @@ export default function OpeningHero({ isStarted = false }) {
         </p>
 
         {/* Scroll Action Button */}
-        <div style={{ marginTop: "32px" }}>
+        <div style={{ marginTop: "22px" }}>
           <button
             onClick={scrollToInvitation}
             className="btn-gold"
