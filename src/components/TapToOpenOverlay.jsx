@@ -78,26 +78,25 @@ export default function TapToOpenOverlay({ onOpen }) {
           transition: "transform 1.3s cubic-bezier(0.76, 0, 0.24, 1)",
           willChange: "transform",
           zIndex: 1,
-          borderRight: "1px solid rgba(212, 175, 55, 0.5)",
+          borderRight: "1px solid rgba(212, 175, 55, 0.2)",
           boxShadow: isOpening
             ? "none"
-            : "inset -16px 0 30px rgba(0, 0, 0, 0.85), 1px 0 10px rgba(212, 175, 55, 0.3)"
+            : "inset -12px 0 25px rgba(0, 0, 0, 0.75)"
         }}
       />
 
-      {/* Center Royal Gate Seam Line */}
+      {/* Center Subtle Royal Gate Seam Line */}
       <div
         style={{
           position: "absolute",
           top: 0,
           bottom: 0,
           left: "50%",
-          width: "2px",
+          width: "1px",
           transform: "translateX(-50%)",
           background:
-            "linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.3) 12%, rgba(254, 240, 138, 0.95) 50%, rgba(212, 175, 55, 0.3) 88%, transparent 100%)",
-          boxShadow: "0 0 12px rgba(245, 158, 11, 0.7)",
-          opacity: isOpening ? 0 : 1,
+            "linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.35) 10%, rgba(212, 175, 55, 0.18) 50%, rgba(212, 175, 55, 0.35) 90%, transparent 100%)",
+          opacity: isOpening ? 0 : 0.75,
           transition: "opacity 0.4s ease",
           zIndex: 2,
           pointerEvents: "none"
@@ -118,10 +117,10 @@ export default function TapToOpenOverlay({ onOpen }) {
           transition: "transform 1.3s cubic-bezier(0.76, 0, 0.24, 1)",
           willChange: "transform",
           zIndex: 1,
-          borderLeft: "1px solid rgba(212, 175, 55, 0.5)",
+          borderLeft: "1px solid rgba(212, 175, 55, 0.2)",
           boxShadow: isOpening
             ? "none"
-            : "inset 16px 0 30px rgba(0, 0, 0, 0.85), -1px 0 10px rgba(212, 175, 55, 0.3)"
+            : "inset 12px 0 25px rgba(0, 0, 0, 0.75)"
         }}
       />
 
@@ -142,8 +141,11 @@ export default function TapToOpenOverlay({ onOpen }) {
           flexDirection: "column",
           alignItems: "center",
           textAlign: "center",
-          padding: "20px",
-          width: "min(360px, 90vw)",
+          padding: "32px 24px",
+          width: "min(380px, 92vw)",
+          borderRadius: "28px",
+          background:
+            "radial-gradient(ellipse at center, rgba(6, 9, 20, 0.95) 0%, rgba(6, 9, 20, 0.88) 60%, transparent 92%)",
           pointerEvents: "auto"
         }}
       >
