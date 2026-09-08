@@ -20,32 +20,11 @@ export default function OpeningHero({ isStarted = false }) {
     // Stage 4: Invitation Titles smoothly glide in (2300ms)
     const t4 = setTimeout(() => setStage(4), 2300);
 
-    let hasUserScrolled = false;
-    const onUserScroll = () => {
-      if (window.scrollY > 50) {
-        hasUserScrolled = true;
-      }
-    };
-    window.addEventListener("scroll", onUserScroll, { passive: true });
-    window.addEventListener("wheel", onUserScroll, { passive: true });
-    window.addEventListener("touchmove", onUserScroll, { passive: true });
-
-    // Auto-scroll after 5 seconds of opening if user hasn't already scrolled
-    const autoScrollTimer = setTimeout(() => {
-      if (!hasUserScrolled && window.scrollY < 50) {
-        scrollToInvitation();
-      }
-    }, 5000);
-
     return () => {
       clearTimeout(t1);
       clearTimeout(t2);
       clearTimeout(t3);
       clearTimeout(t4);
-      clearTimeout(autoScrollTimer);
-      window.removeEventListener("scroll", onUserScroll);
-      window.removeEventListener("wheel", onUserScroll);
-      window.removeEventListener("touchmove", onUserScroll);
     };
   }, [isStarted]);
 
