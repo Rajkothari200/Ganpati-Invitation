@@ -27,9 +27,9 @@ export const invitationConfig = {
 
   // Key Event Dates & Timings
   festivalDates: {
-    arrivalDate: "Sunday, 14th September 2026",
+    arrivalDate: "Monday, 14th September 2026",
     arrivalTime: "10:00 AM onwards (followed by Prasadam)",
-    visarjanDate: "Monday, 15th September 2026",
+    visarjanDate: "Tuesday, 15th September 2026",
     visarjanTime: "7:00 PM onwards",
     durationBadge: "1.5 Days of Ganpati Celebrations"
   },
