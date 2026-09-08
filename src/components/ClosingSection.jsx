@@ -4,11 +4,91 @@ import { invitationConfig } from "../config/invitationConfig";
 import { Sparkles } from "lucide-react";
 
 /**
- * Traditional Indian Steamed Modak Graphic
- * Crafted with warm ivory/cream tones, golden accents, subtle fold detailing,
- * and a traditional saffron kesar tip.
+ * Realistic Indian Hibiscus (Japa Pushpa / Jaswand)
+ * Lord Ganesha's sacred vermilion-red flower with velvety petals,
+ * delicate veins, and golden pollen stamen.
  */
-function ModakGraphic({ size = 44, style = {} }) {
+function FlowerGraphic({ size = 38, style = {} }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{
+        display: "block",
+        filter: "drop-shadow(0 3px 10px rgba(220, 38, 38, 0.5))",
+        ...style
+      }}
+    >
+      <defs>
+        <radialGradient id="hibiscusPetalGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#ef4444" />
+          <stop offset="55%" stopColor="#dc2626" />
+          <stop offset="85%" stopColor="#b91c1c" />
+          <stop offset="100%" stopColor="#7f1d1d" />
+        </radialGradient>
+        <radialGradient id="flowerCenterGrad" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#fef08a" />
+          <stop offset="40%" stopColor="#f59e0b" />
+          <stop offset="80%" stopColor="#881337" />
+          <stop offset="100%" stopColor="#4c0519" />
+        </radialGradient>
+        <radialGradient id="flowerHalo" cx="50%" cy="50%" r="48%">
+          <stop offset="0%" stopColor="rgba(245, 158, 11, 0.45)" />
+          <stop offset="60%" stopColor="rgba(220, 38, 38, 0.2)" />
+          <stop offset="100%" stopColor="rgba(220, 38, 38, 0)" />
+        </radialGradient>
+      </defs>
+
+      {/* Warm Divine Aura */}
+      <circle cx="50" cy="50" r="46" fill="url(#flowerHalo)" />
+
+      {/* 5 Petals rotated around center */}
+      {[0, 72, 144, 216, 288].map((angle, i) => (
+        <g key={i} transform={`rotate(${angle} 50 50)`}>
+          <path
+            d="M 50 50
+               C 34 34, 24 18, 42 8
+               C 50 3, 58 3, 64 9
+               C 76 21, 66 35, 50 50 Z"
+            fill="url(#hibiscusPetalGrad)"
+            stroke="#fca5a5"
+            strokeWidth="0.6"
+            strokeOpacity="0.75"
+          />
+          {/* Subtle petal vein line */}
+          <path
+            d="M 50 50 Q 51 26 53 10"
+            stroke="#fecaca"
+            strokeWidth="0.75"
+            strokeOpacity="0.6"
+            strokeLinecap="round"
+          />
+        </g>
+      ))}
+
+      {/* Flower Core */}
+      <circle cx="50" cy="50" r="12" fill="url(#flowerCenterGrad)" />
+
+      {/* Stamen Column with Pollen Anthers */}
+      <path d="M 50 50 L 53 30" stroke="#fef08a" strokeWidth="2.2" strokeLinecap="round" />
+      <circle cx="53" cy="29" r="2.2" fill="#fbbf24" stroke="#d97706" strokeWidth="0.5" />
+      <circle cx="56" cy="33" r="1.8" fill="#f59e0b" />
+      <circle cx="50" cy="32" r="1.8" fill="#fbbf24" />
+      <circle cx="53" cy="36" r="1.6" fill="#fef08a" />
+      <circle cx="56" cy="37" r="1.6" fill="#f59e0b" />
+    </svg>
+  );
+}
+
+/**
+ * Traditional Indian Steamed Modak Graphic
+ * Warm ivory/cream steamed body with delicate golden contour rim,
+ * authentic pleat ridges, and a saffron kesar tip.
+ */
+function ModakGraphic({ size = 42, style = {} }) {
   return (
     <svg
       width={size}
@@ -23,7 +103,6 @@ function ModakGraphic({ size = 44, style = {} }) {
       }}
     >
       <defs>
-        {/* Steamed Ivory-to-Cream Gradient */}
         <linearGradient id="modakBodyGrad" x1="50%" y1="0%" x2="50%" y2="100%">
           <stop offset="0%" stopColor="#fffef9" />
           <stop offset="32%" stopColor="#fef8e4" />
@@ -31,14 +110,12 @@ function ModakGraphic({ size = 44, style = {} }) {
           <stop offset="100%" stopColor="#e8d79f" />
         </linearGradient>
 
-        {/* Soft Golden Contour Rim */}
         <linearGradient id="modakGoldTrim" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="#faecc1" />
           <stop offset="50%" stopColor="#d4af37" />
           <stop offset="100%" stopColor="#9a741c" />
         </linearGradient>
 
-        {/* Warm Divine Aura Glow */}
         <radialGradient id="modakAura" cx="50%" cy="55%" r="48%">
           <stop offset="0%" stopColor="rgba(245, 158, 11, 0.55)" />
           <stop offset="55%" stopColor="rgba(212, 175, 55, 0.22)" />
@@ -64,25 +141,20 @@ function ModakGraphic({ size = 44, style = {} }) {
       />
 
       {/* Traditional Kalyas (Folds & Ridges) */}
-      {/* Center Ridge */}
       <path d="M 50 12 Q 50 56 50 99" stroke="#d6be7b" strokeWidth="1.6" strokeLinecap="round" />
       <path d="M 50 14 Q 49 56 49 98" stroke="#ffffff" strokeWidth="1" strokeLinecap="round" opacity="0.85" />
 
-      {/* Mid Left Ridge */}
       <path d="M 50 12 Q 37 50 35 95" stroke="#ccb26b" strokeWidth="1.4" strokeLinecap="round" />
       <path d="M 50 14 Q 38 50 36 94" stroke="#ffffff" strokeWidth="0.8" strokeLinecap="round" opacity="0.75" />
 
-      {/* Outer Left Ridge */}
       <path d="M 50 15 Q 26 55 22 85" stroke="#be9f55" strokeWidth="1.2" strokeLinecap="round" />
 
-      {/* Mid Right Ridge */}
       <path d="M 50 12 Q 63 50 65 95" stroke="#ccb26b" strokeWidth="1.4" strokeLinecap="round" />
       <path d="M 50 14 Q 62 50 64 94" stroke="#ffffff" strokeWidth="0.8" strokeLinecap="round" opacity="0.75" />
 
-      {/* Outer Right Ridge */}
       <path d="M 50 15 Q 74 55 78 85" stroke="#be9f55" strokeWidth="1.2" strokeLinecap="round" />
 
-      {/* Saffron Kesar Strand at the Shikhar Tip */}
+      {/* Saffron Kesar Strand at the Tip */}
       <path d="M 50 8 Q 51 12 50 16" stroke="#ea580c" strokeWidth="2.2" strokeLinecap="round" />
       <circle cx="50" cy="8" r="1.6" fill="#f59e0b" />
     </svg>
@@ -93,88 +165,156 @@ export default function ClosingSection() {
   const { hosts } = invitationConfig;
 
   const containerRef = useRef(null);
-  const medallionRef = useRef(null);
+  const idolRef = useRef(null);
+  const flowerButtonRef = useRef(null);
   const modakButtonRef = useRef(null);
 
-  const [activeModaks, setActiveModaks] = useState([]);
-  const [settledCount, setSettledCount] = useState(0);
+  // Active flying offerings
+  const [activeOfferings, setActiveOfferings] = useState([]);
+
+  // Accumulated settled offerings on Lord Ganesha's sacred altar
+  const [settledFlowers, setSettledFlowers] = useState([]);
+  const [settledModaks, setSettledModaks] = useState([]);
+
+  // Devotional sparkle flash on altar
   const [showAltarSparkle, setShowAltarSparkle] = useState(false);
-  const [confirmationText, setConfirmationText] = useState("");
+
+  // Temporary confirmation toast
+  const [confirmation, setConfirmation] = useState("");
   const [confirmationKey, setConfirmationKey] = useState(0);
 
-  // Existing Flower Shower Confetti (Completely Preserved)
-  const triggerFlowerShower = () => {
-    try {
-      confetti({
-        particleCount: 50,
-        spread: 80,
-        origin: { y: 0.65 },
-        colors: ["#f59e0b", "#fbbf24", "#d4af37", "#fef08a", "#d97706"],
-        shapes: ["circle"],
-        scalar: 1.1,
-        ticks: 200,
-        gravity: 0.8
-      });
-    } catch (e) {
-      console.log("Confetti trigger:", e);
-    }
-  };
-
-  // Devotional Modak Offering Interaction
-  const triggerOfferModak = () => {
-    if (!containerRef.current || !medallionRef.current || !modakButtonRef.current) return;
+  // Realistic Flower Offering to Lord Ganesha
+  const triggerOfferFlower = () => {
+    if (!containerRef.current || !idolRef.current || !flowerButtonRef.current) return;
 
     try {
       const cRect = containerRef.current.getBoundingClientRect();
-      const mRect = medallionRef.current.getBoundingClientRect();
-      const bRect = modakButtonRef.current.getBoundingClientRect();
+      const iRect = idolRef.current.getBoundingClientRect();
+      const bRect = flowerButtonRef.current.getBoundingClientRect();
 
-      // Starting point at "Offer Modak" button center
+      // Start at button center
       const startX = bRect.left + bRect.width / 2 - cRect.left;
       const startY = bRect.top + bRect.height / 2 - cRect.top;
 
-      // Target position at the base of Lord Ganesha's circular medallion
-      const targetX = mRect.left + mRect.width / 2 - cRect.left;
-      const targetY = mRect.top + mRect.height + 14 - cRect.top;
+      // Target position: Lord Ganesha's sacred lotus pedestal / altar
+      // Dispersed organically across the footstool (-40px to +40px)
+      const offsetSpread = (Math.random() - 0.5) * 80;
+      const targetX = iRect.left + iRect.width / 2 + offsetSpread - cRect.left;
+      const targetY = iRect.top + iRect.height - 12 - cRect.top;
 
       const dx = targetX - startX;
       const dy = targetY - startY;
-
       const id = Date.now() + Math.random();
-      setActiveModaks((prev) => [...prev, { id, startX, startY, dx, dy }]);
 
-      // Arrival at Lord Ganesha's offering area (~1350ms)
+      // Add to active flying offerings
+      setActiveOfferings((prev) => [
+        ...prev,
+        { id, type: "flower", startX, startY, dx, dy, targetX, targetY }
+      ]);
+
+      // At arrival (~1400ms)
       setTimeout(() => {
-        // Small burst of warm golden particles
-        const originX = (mRect.left + mRect.width / 2) / window.innerWidth;
-        const originY = (mRect.top + mRect.height + 15) / window.innerHeight;
+        // Small, elegant golden particle sparkle at Bappa's feet
+        const originX = (iRect.left + iRect.width / 2 + offsetSpread) / window.innerWidth;
+        const originY = (iRect.top + iRect.height) / window.innerHeight;
         try {
           confetti({
-            particleCount: 26,
-            spread: 55,
+            particleCount: 22,
+            spread: 48,
             origin: { x: originX, y: originY },
-            colors: ["#fef08a", "#fbbf24", "#d4af37", "#f59e0b", "#d97706"],
+            colors: ["#fef08a", "#fbbf24", "#d4af37", "#f59e0b", "#f87171"],
             shapes: ["circle"],
-            scalar: 0.8,
-            ticks: 120,
-            gravity: 0.85
+            scalar: 0.75,
+            ticks: 100,
+            gravity: 0.88
           });
         } catch (e) {}
 
-        // Altar golden sparkle flash
+        // Altar sparkle flash
         setShowAltarSparkle(true);
-        setTimeout(() => setShowAltarSparkle(false), 900);
+        setTimeout(() => setShowAltarSparkle(false), 850);
 
-        // Update settled prasad count
-        setSettledCount((c) => c + 1);
+        // Accumulate settled flower (max 6 to keep clean performance)
+        const rotation = Math.round((Math.random() - 0.5) * 36);
+        setSettledFlowers((prev) => {
+          const next = [...prev, { id, offsetX: offsetSpread, rotation }];
+          return next.slice(-6);
+        });
 
-        // Temporary subtle confirmation message
-        setConfirmationText("Modak offered with devotion 🙏");
+        // Confirmation
+        setConfirmation("Flower offered with devotion 🙏");
         setConfirmationKey((k) => k + 1);
 
-        // Remove the traveling instance
-        setActiveModaks((prev) => prev.filter((item) => item.id !== id));
-      }, 1350);
+        // Remove traveling instance
+        setActiveOfferings((prev) => prev.filter((item) => item.id !== id));
+      }, 1400);
+    } catch (err) {
+      console.warn("Offer flower error:", err);
+    }
+  };
+
+  // Realistic Modak Offering to Lord Ganesha
+  const triggerOfferModak = () => {
+    if (!containerRef.current || !idolRef.current || !modakButtonRef.current) return;
+
+    try {
+      const cRect = containerRef.current.getBoundingClientRect();
+      const iRect = idolRef.current.getBoundingClientRect();
+      const bRect = modakButtonRef.current.getBoundingClientRect();
+
+      // Start at button center
+      const startX = bRect.left + bRect.width / 2 - cRect.left;
+      const startY = bRect.top + bRect.height / 2 - cRect.top;
+
+      // Target position: Central altar tray right in front of Bappa's lotus throne
+      const offsetSpread = (Math.random() - 0.5) * 44;
+      const targetX = iRect.left + iRect.width / 2 + offsetSpread - cRect.left;
+      const targetY = iRect.top + iRect.height - 22 - cRect.top;
+
+      const dx = targetX - startX;
+      const dy = targetY - startY;
+      const id = Date.now() + Math.random();
+
+      setActiveOfferings((prev) => [
+        ...prev,
+        { id, type: "modak", startX, startY, dx, dy, targetX, targetY }
+      ]);
+
+      // At arrival (~1400ms)
+      setTimeout(() => {
+        // Small, elegant golden particle burst
+        const originX = (iRect.left + iRect.width / 2 + offsetSpread) / window.innerWidth;
+        const originY = (iRect.top + iRect.height) / window.innerHeight;
+        try {
+          confetti({
+            particleCount: 24,
+            spread: 52,
+            origin: { x: originX, y: originY },
+            colors: ["#fef08a", "#fbbf24", "#d4af37", "#f59e0b", "#d97706"],
+            shapes: ["circle"],
+            scalar: 0.78,
+            ticks: 110,
+            gravity: 0.88
+          });
+        } catch (e) {}
+
+        // Altar sparkle flash
+        setShowAltarSparkle(true);
+        setTimeout(() => setShowAltarSparkle(false), 850);
+
+        // Accumulate settled modak (max 3 on the altar plate)
+        setSettledModaks((prev) => {
+          const next = [...prev, { id, offsetX: offsetSpread }];
+          return next.slice(-3);
+        });
+
+        // Confirmation
+        setConfirmation("Modak offered with devotion 🙏");
+        setConfirmationKey((k) => k + 1);
+
+        // Remove traveling instance
+        setActiveOfferings((prev) => prev.filter((item) => item.id !== id));
+      }, 1400);
     } catch (err) {
       console.warn("Offer modak error:", err);
     }
@@ -200,89 +340,177 @@ export default function ClosingSection() {
           position: "relative"
         }}
       >
-        {/* Divine Aura Glow behind Ganpati closing portrait */}
+        {/* Divine Aura Glow behind Ganpati idol */}
         <div
           className="animate-aura-pulse"
           style={{
             position: "absolute",
-            top: "15%",
+            top: "22%",
             left: "50%",
             transform: "translate(-50%, -50%)",
-            width: "min(400px, 80vw)",
-            height: "min(400px, 80vw)",
+            width: "min(460px, 86vw)",
+            height: "min(460px, 86vw)",
             background:
-              "radial-gradient(circle, rgba(245, 158, 11, 0.25) 0%, rgba(212, 175, 55, 0.12) 40%, transparent 70%)",
+              "radial-gradient(circle, rgba(245, 158, 11, 0.28) 0%, rgba(212, 175, 55, 0.14) 42%, transparent 72%)",
             borderRadius: "50%",
             pointerEvents: "none"
           }}
         />
 
-        {/* Circular Medallion of Lord Ganesha */}
+        {/* FULL LORD GANESHA TEMPLE IDOL & CONSECRATED ALTAR */}
         <div
-          ref={medallionRef}
+          ref={idolRef}
           className="animate-divine-float"
           style={{
-            width: "130px",
-            height: "130px",
-            borderRadius: "50%",
-            overflow: "hidden",
-            margin: "0 auto 28px",
-            border: "2px solid var(--gold-light)",
-            boxShadow:
-              "0 0 35px rgba(212, 175, 55, 0.4), inset 0 0 15px rgba(0, 0, 0, 0.5)",
-            position: "relative"
+            position: "relative",
+            width: "min(285px, 75vw)",
+            maxWidth: "320px",
+            aspectRatio: "3 / 4",
+            margin: "0 auto 30px",
+            borderRadius: "24px 24px 18px 18px",
+            zIndex: 3
           }}
         >
-          <img
-            src={invitationConfig.assets.ganpatiImage}
-            alt="Lord Ganesha in Divine Radiance"
+          {/* Idol Artwork Frame */}
+          <div
             style={{
               width: "100%",
               height: "100%",
-              objectFit: "cover",
-              objectPosition: "center top"
+              borderRadius: "24px 24px 18px 18px",
+              overflow: "hidden",
+              border: "2px solid rgba(246, 232, 177, 0.45)",
+              boxShadow:
+                "0 20px 55px -10px rgba(0, 0, 0, 0.9), 0 0 40px rgba(245, 158, 11, 0.3), inset 0 0 25px rgba(0, 0, 0, 0.65)",
+              position: "relative",
+              background: "#080c1d"
             }}
-          />
-        </div>
+          >
+            <img
+              src={invitationConfig.assets.ganpatiImage}
+              alt="Lord Ganesha Full Idol in Divine Golden Radiance"
+              style={{
+                width: "100%",
+                height: "100%",
+                objectFit: "cover",
+                objectPosition: "center top",
+                display: "block"
+              }}
+            />
 
-        {/* Settled Offered Modak at Lord Ganesha's feet */}
-        {settledCount > 0 && (
+            {/* Seamless Vignette at Edges */}
+            <div
+              style={{
+                position: "absolute",
+                inset: 0,
+                background:
+                  "linear-gradient(180deg, rgba(6, 9, 20, 0.08) 0%, rgba(6, 9, 20, 0) 50%, rgba(6, 9, 20, 0.72) 100%)",
+                pointerEvents: "none"
+              }}
+            />
+
+            {/* Inner Temple Filigree Border */}
+            <div
+              style={{
+                position: "absolute",
+                inset: "6px",
+                borderRadius: "18px 18px 12px 12px",
+                border: "1px solid rgba(212, 175, 55, 0.35)",
+                pointerEvents: "none"
+              }}
+            />
+          </div>
+
+          {/* Sacred Altar Pedestal Shelf at Bappa's Feet */}
           <div
-            className="animate-modak-settled"
             style={{
               position: "absolute",
-              top: "148px",
+              bottom: "-10px",
               left: "50%",
-              transform: "translate(-50%, 0)",
-              zIndex: 4,
-              pointerEvents: "none",
+              transform: "translateX(-50%)",
+              width: "min(260px, 70vw)",
+              height: "22px",
+              background:
+                "linear-gradient(180deg, rgba(212, 175, 55, 0.45) 0%, rgba(146, 98, 16, 0.75) 50%, rgba(58, 32, 3, 0.9) 100%)",
+              borderRadius: "12px",
+              border: "1px solid rgba(254, 240, 138, 0.65)",
+              boxShadow:
+                "0 8px 24px rgba(0, 0, 0, 0.85), 0 0 18px rgba(245, 158, 11, 0.35), inset 0 1px 2px rgba(255, 255, 255, 0.7)",
+              zIndex: 7,
               display: "flex",
               alignItems: "center",
               justifyContent: "center"
             }}
           >
-            <ModakGraphic size={32} />
+            <span
+              style={{
+                fontSize: "0.58rem",
+                letterSpacing: "0.18em",
+                textTransform: "uppercase",
+                color: "rgba(254, 243, 199, 0.95)",
+                fontFamily: "var(--font-display)",
+                fontWeight: 600,
+                textShadow: "0 1px 2px rgba(0, 0, 0, 0.8)"
+              }}
+            >
+              ॥ श्री चरणी अर्पणम् ॥
+            </span>
           </div>
-        )}
 
-        {/* Subtle Altar Sparkle Flash upon offering */}
-        {showAltarSparkle && (
-          <div
-            className="animate-altar-sparkle"
-            style={{
-              position: "absolute",
-              top: "155px",
-              left: "50%",
-              width: "70px",
-              height: "70px",
-              borderRadius: "50%",
-              background:
-                "radial-gradient(circle, rgba(254, 240, 138, 0.95) 0%, rgba(245, 158, 11, 0.5) 45%, transparent 70%)",
-              pointerEvents: "none",
-              zIndex: 5
-            }}
-          />
-        )}
+          {/* Accumulation of Settled Flowers at Bappa's Feet */}
+          {settledFlowers.map((f) => (
+            <div
+              key={f.id}
+              className="animate-settled-offering"
+              style={{
+                position: "absolute",
+                bottom: "-16px",
+                left: `calc(50% + ${f.offsetX}px)`,
+                transform: `translateX(-50%) rotate(${f.rotation}deg)`,
+                zIndex: 8,
+                pointerEvents: "none"
+              }}
+            >
+              <FlowerGraphic size={26} />
+            </div>
+          ))}
+
+          {/* Accumulation of Settled Modaks on the Altar */}
+          {settledModaks.map((m) => (
+            <div
+              key={m.id}
+              className="animate-settled-offering"
+              style={{
+                position: "absolute",
+                bottom: "-14px",
+                left: `calc(50% + ${m.offsetX}px)`,
+                transform: "translateX(-50%)",
+                zIndex: 9,
+                pointerEvents: "none"
+              }}
+            >
+              <ModakGraphic size={28} />
+            </div>
+          ))}
+
+          {/* Golden Altar Sparkle Flash upon offering */}
+          {showAltarSparkle && (
+            <div
+              className="animate-altar-sparkle"
+              style={{
+                position: "absolute",
+                bottom: "-20px",
+                left: "50%",
+                width: "80px",
+                height: "80px",
+                borderRadius: "50%",
+                background:
+                  "radial-gradient(circle, rgba(254, 240, 138, 0.95) 0%, rgba(245, 158, 11, 0.5) 45%, transparent 70%)",
+                pointerEvents: "none",
+                zIndex: 10
+              }}
+            />
+          )}
+        </div>
 
         {/* Sentimental Closing Narrative */}
         <p
@@ -322,20 +550,24 @@ export default function ClosingSection() {
             flexWrap: "wrap",
             gap: "14px",
             justifyContent: "center",
-            margin: "32px 0 16px"
+            margin: "32px 0 14px"
           }}
         >
-          {/* Option 1: Offer Flowers (Existing, Preserved) */}
+          {/* Button 1: Offer Flowers */}
           <button
-            onClick={triggerFlowerShower}
+            ref={flowerButtonRef}
+            onClick={triggerOfferFlower}
             className="btn-gold-solid"
-            aria-label="Offer virtual flower shower to Bappa"
+            aria-label="Offer flowers to Lord Ganesha"
+            style={{
+              cursor: "pointer"
+            }}
           >
             <Sparkles size={16} />
             <span>Offer Flowers 🌸</span>
           </button>
 
-          {/* Option 2: Offer Modak (New Matching Interactive Feature) */}
+          {/* Button 2: Offer Modak */}
           <button
             ref={modakButtonRef}
             onClick={triggerOfferModak}
@@ -350,12 +582,12 @@ export default function ClosingSection() {
           </button>
         </div>
 
-        {/* Subtle Confirmation after Offering Modak */}
+        {/* Temporary Subtle Devotional Confirmation */}
         <div style={{ minHeight: "26px", margin: "4px 0 24px" }}>
-          {confirmationText && (
+          {confirmation && (
             <p
               key={confirmationKey}
-              className="animate-modak-confirmation"
+              className="animate-offering-confirmation"
               style={{
                 fontSize: "0.85rem",
                 color: "var(--gold-light)",
@@ -366,27 +598,31 @@ export default function ClosingSection() {
                 textShadow: "0 0 12px rgba(212, 175, 55, 0.45)"
               }}
             >
-              {confirmationText}
+              {confirmation}
             </p>
           )}
         </div>
 
-        {/* Flying Modaks Animated along Curved Trajectory */}
-        {activeModaks.map((m) => (
+        {/* Flying Offerings Traveling in Smooth Curved Arcs */}
+        {activeOfferings.map((o) => (
           <div
-            key={m.id}
-            className="animate-modak-offer"
+            key={o.id}
+            className={o.type === "flower" ? "animate-flower-offer" : "animate-modak-offer"}
             style={{
               position: "absolute",
-              left: `${m.startX}px`,
-              top: `${m.startY}px`,
+              left: `${o.startX}px`,
+              top: `${o.startY}px`,
               pointerEvents: "none",
-              zIndex: 30,
-              "--dx": `${m.dx}px`,
-              "--dy": `${m.dy}px`
+              zIndex: 35,
+              "--dx": `${o.dx}px`,
+              "--dy": `${o.dy}px`
             }}
           >
-            <ModakGraphic size={44} />
+            {o.type === "flower" ? (
+              <FlowerGraphic size={42} />
+            ) : (
+              <ModakGraphic size={42} />
+            )}
           </div>
         ))}
 
