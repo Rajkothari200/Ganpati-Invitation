@@ -1,0 +1,344 @@
+/* ==========================================================================
+   Luxury Indian Festive & Contemporary Design System
+   Ganpati Chaturthi 2026 Digital Invitation
+   ========================================================================== */
+
+:root {
+  /* Color Palette - Midnight Royal Indigo & Antique Gold */
+  --bg-primary: #060914;
+  --bg-secondary: #0b1128;
+  --bg-tertiary: #111a3d;
+  --bg-deep: #03050b;
+  --bg-maroon-subtle: #1c0910;
+
+  /* Antique Metallic Gold Spectrum */
+  --gold-primary: #d4af37;
+  --gold-light: #faecc1;
+  --gold-warm: #e6ca65;
+  --gold-dark: #916110;
+  --gold-border: rgba(212, 175, 55, 0.25);
+  --gold-border-highlight: rgba(246, 232, 177, 0.45);
+  --gold-glow: rgba(212, 175, 55, 0.22);
+
+  /* Gold Gradients */
+  --gold-metallic-grad: linear-gradient(135deg, #d4af37 0%, #fef5d6 28%, #aa771c 55%, #fcf5d8 80%, #85550a 100%);
+  --gold-text-grad: linear-gradient(135deg, #fff3d1 0%, #d4af37 50%, #b8860b 100%);
+  --gold-subtle-grad: linear-gradient(180deg, rgba(212, 175, 55, 0.15) 0%, rgba(212, 175, 55, 0.02) 100%);
+
+  /* Festive Saffron & Divine Glow */
+  --saffron-accent: #f59e0b;
+  --saffron-bright: #fbbf24;
+  --saffron-deep: #d97706;
+  --divine-aura: radial-gradient(circle, rgba(245, 158, 11, 0.24) 0%, rgba(212, 175, 55, 0.14) 40%, rgba(6, 9, 20, 0) 70%);
+
+  /* Warm Ivory / Editorial Typography */
+  --text-primary: #fdfbf7;
+  --text-secondary: #ebdcc2;
+  --text-muted: #9e9383;
+  --text-dim: #6c6356;
+
+  /* Glassmorphic Surfaces */
+  --glass-card-bg: rgba(11, 17, 38, 0.65);
+  --glass-card-border: 1px solid rgba(212, 175, 55, 0.22);
+  --glass-card-hover-border: 1px solid rgba(246, 232, 177, 0.45);
+  --glass-blur: blur(20px);
+  --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.75), 0 0 30px rgba(212, 175, 55, 0.06);
+
+  /* Typography Stacks */
+  --font-heading: 'Cormorant Garamond', 'Cinzel', serif;
+  --font-display: 'Cinzel', serif;
+  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sanskrit: 'Noto Serif Devanagari', serif;
+
+  /* Layout Spacing */
+  --container-max: 1040px;
+  --content-max: 720px;
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-smooth: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-fast: all 0.2s ease-out;
+}
+
+/* Reset & Box Sizing */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  background: radial-gradient(circle at 50% 0%, #0d1637 0%, var(--bg-primary) 50%, #03050c 100%);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.35);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.6);
+}
+
+/* Typography Utilities */
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-sanskrit {
+  font-family: var(--font-sanskrit);
+}
+
+.text-gold-gradient {
+  background: var(--gold-metallic-grad);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+.text-gold-light {
+  color: var(--gold-light);
+}
+
+.text-gold-primary {
+  color: var(--gold-primary);
+}
+
+.text-saffron {
+  color: var(--saffron-bright);
+}
+
+.text-ivory {
+  color: var(--text-primary);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: var(--glass-card-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: var(--glass-card-border);
+  box-shadow: var(--glass-shadow);
+  border-radius: var(--radius-lg);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.glass-panel:hover {
+  border-color: rgba(246, 232, 177, 0.4);
+  box-shadow: 0 20px 48px -10px rgba(0, 0, 0, 0.8), 0 0 35px rgba(212, 175, 55, 0.12);
+}
+
+.glass-pill {
+  background: rgba(10, 16, 36, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid var(--gold-border);
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+/* Divine Shimmer Line & Corner Accents */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px auto;
+  max-width: 280px;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.7), transparent);
+}
+
+.gold-divider-symbol {
+  color: var(--gold-primary);
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  filter: drop-shadow(0 0 6px rgba(212, 175, 55, 0.5));
+}
+
+/* Subtle Temple Frame Corners */
+.temple-border-box {
+  position: relative;
+  padding: 32px;
+}
+
+.temple-border-box::before,
+.temple-border-box::after,
+.temple-border-box .corner-bl,
+.temple-border-box .corner-br {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  pointer-events: none;
+  border-color: rgba(212, 175, 55, 0.5);
+  border-style: solid;
+}
+
+.temple-border-box::before {
+  top: 10px;
+  left: 10px;
+  border-width: 1px 0 0 1px;
+}
+
+.temple-border-box::after {
+  top: 10px;
+  right: 10px;
+  border-width: 1px 1px 0 0;
+}
+
+.temple-border-box .corner-bl {
+  bottom: 10px;
+  left: 10px;
+  border-width: 0 0 1px 1px;
+}
+
+.temple-border-box .corner-br {
+  bottom: 10px;
+  right: 10px;
+  border-width: 0 1px 1px 0;
+}
+
+/* Interactive Buttons */
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.22) 0%, rgba(212, 175, 55, 0.08) 100%);
+  border: 1px solid var(--gold-primary);
+  color: var(--gold-light);
+  padding: 13px 28px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-gold:hover {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.38) 0%, rgba(245, 158, 11, 0.22) 100%);
+  border-color: var(--gold-light);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(212, 175, 55, 0.25);
+}
+
+.btn-gold:active {
+  transform: translateY(0);
+}
+
+.btn-gold-solid {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--gold-metallic-grad);
+  border: none;
+  color: #171103;
+  padding: 14px 30px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.35);
+  transition: var(--transition-smooth);
+}
+
+.btn-gold-solid:hover {
+  filter: brightness(1.08);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(212, 175, 55, 0.45);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-secondary);
+  padding: 13px 26px;
+  border-radius: var(--radius-full);
+  font-family: var(--font-display);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(212, 175, 55, 0.4);
+  color: var(--gold-light);
+  transform: translateY(-2px);
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
