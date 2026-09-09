@@ -37,6 +37,7 @@ export const invitationConfig = {
   // Venue & Location (Fetched directly from Google Maps)
   venue: {
     title: "Residence",
+    flatNo: "Flat No. 203",
     residenceName: "Sara Residency",
     subTitle: "Apartment Building",
     addressLine1: "Jethabhai Lane, Behind Kailash Plaza",

@@ -6,7 +6,7 @@ export default function VenueCard() {
   const [copied, setCopied] = useState(false);
   const { venue } = invitationConfig;
 
-  const fullAddress = `${venue.residenceName}, ${venue.addressLine1}, ${venue.addressLine2}, ${venue.city}, ${venue.state} ${venue.postalCode}. Landmark: ${venue.landmark}`;
+  const fullAddress = `${venue.flatNo ? `${venue.flatNo}, ` : ""}${venue.residenceName}, ${venue.addressLine1}, ${venue.addressLine2}, ${venue.city}, ${venue.state} ${venue.postalCode}. Landmark: ${venue.landmark}`;
 
   const copyToClipboard = () => {
     navigator.clipboard.writeText(fullAddress).then(() => {
@@ -119,6 +119,14 @@ export default function VenueCard() {
                 marginBottom: "12px"
               }}
             >
+              {venue.flatNo && (
+                <>
+                  <span style={{ color: "var(--gold-light)", fontWeight: 500 }}>
+                    {venue.flatNo}
+                  </span>
+                  <br />
+                </>
+              )}
               {venue.addressLine1}
               <br />
               {venue.addressLine2}
